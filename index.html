@@ -950,7 +950,7 @@ form.addEventListener("submit", async (event) => {
 
   try {
     const answer = await askNithinAI(question);
-    reply.textContent = answer;
+    reply.textContent = answer.replace(/\*\*(.*?)\*\*/g, "$1");
   } catch (error) {
     reply.textContent = "Unable to connect to Nithin AI. Please try again.";
     console.error(error);
