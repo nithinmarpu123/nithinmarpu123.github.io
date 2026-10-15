@@ -372,6 +372,7 @@
     }
 
     .bubble {
+      white-space: pre-line;
       max-width: 90%;
       background: #18292c;
       border: 1px solid #294649;
@@ -950,7 +951,9 @@ form.addEventListener("submit", async (event) => {
 
   try {
     const answer = await askNithinAI(question);
-    reply.textContent = answer.replace(/\*\*(.*?)\*\*/g, "$1");
+    reply.textContent = answer
+     .replace(/\*\*(.*?)\*\*/g, "$1")
+     .replace(/\s+-\s+/g, "\n• ");
   } catch (error) {
     reply.textContent = "Unable to connect to Nithin AI. Please try again.";
     console.error(error);
